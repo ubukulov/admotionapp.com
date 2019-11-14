@@ -26,6 +26,10 @@ class Gift extends Model
         }
 
         if (!empty($this->from) && !empty($this->to)) {
+            return 'от '.$this->from.' тг.'.' до '.$this->to.' тг.';
+        }
+
+        if (empty($this->from) && empty($this->to)) {
             return 'условия не указано';
         }
     }
