@@ -95,8 +95,8 @@ class UserController extends BaseController
         unset($request[0], $request[1]);
 
         $query = http_build_query($request);
-
         //redirect a customer to payment page
-        header('Location:https://api.paybox.money/payment.php?'.$query);
+        header('Location: https://api.paybox.money/payment.php?'.$query);
+        exit();
     }
 }
