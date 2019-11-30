@@ -8,5 +8,7 @@ Route::group(['prefix' => 'user'], function(){
 
     Route::group(['middleware' => 'auth'], function(){
         Route::get('cabinet', 'UserController@cabinet')->name('user.cabinet');
+        Route::post('/profile', 'UserController@profile')->name('user.profile');
+        Route::post('/payment', 'UserController@payment')->name('user.payment');
     });
 });

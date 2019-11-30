@@ -46,4 +46,9 @@ class Partner extends Authenticatable
     {
         return asset('uploads/partners/'.$this->image);
     }
+
+    public function categories()
+    {
+        return $this->belongsToMany('App\Models\Category', 'category_partners', 'partner_id', 'category_id');
+    }
 }

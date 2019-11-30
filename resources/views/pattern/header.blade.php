@@ -17,14 +17,9 @@
                         Категории
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="#">Еда</a>
-                        <a class="dropdown-item" href="#">Развлечение</a>
-                        <a class="dropdown-item" href="#">Красота</a>
-                        <a class="dropdown-item" href="#">Спорт</a>
-                        <a class="dropdown-item" href="#">Здоровье</a>
-                        <a class="dropdown-item" href="#">Услуги</a>
-                        <a class="dropdown-item" href="#">Продукты</a>
-                        <a class="dropdown-item" href="#">Для авто</a>
+                        @foreach($cats as $cat)
+                        <a class="dropdown-item" href="{{ $cat->url() }}">{{ $cat->title }}</a>
+                        @endforeach
                     </div>
                 </li>
                 <li class="nav-item">
