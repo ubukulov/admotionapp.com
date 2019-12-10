@@ -18,4 +18,9 @@ class Payment extends Model
     {
         return $this->belongsTo('App\Models\User');
     }
+
+    public function partner()
+    {
+        return $this->hasOne('App\Models\Partner', 'id', 'partner_id');
+    }
 }

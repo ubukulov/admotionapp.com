@@ -75,7 +75,7 @@
                         @foreach($user->payments as $payment)
                         <tr>
                             <td>{{ $payment->id }}</td>
-                            <td>{{ $payment->partner_id }}</td>
+                            <td>{{ $payment->partner->title }}</td>
                             <td>{{ $payment->sum }}</td>
                             <td>{{ $payment->status }}</td>
                             <td>
