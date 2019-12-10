@@ -88,7 +88,9 @@
                     <td>{{ $payment->sum }}</td>
                     <td>{{ $payment->status }}</td>
                     <td>
+                        @if($payment->status != 'ok')
                         <a href="{{ route('payment_status', ['id' => $payment->id]) }}" class="btn btn-success">Проверить</a>
+                        @endif
                     </td>
                 </tr>
                 @endforeach
