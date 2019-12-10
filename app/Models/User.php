@@ -41,4 +41,14 @@ class User extends Authenticatable
     {
         return $this->first_name. " " . $this->last_name;
     }
+
+    public function payments()
+    {
+        return $this->hasMany('App\Models\Payment', 'user_id');
+    }
+
+    public function gifts()
+    {
+        return $this->hasMany('App\Models\UserGift', 'user_id');
+    }
 }

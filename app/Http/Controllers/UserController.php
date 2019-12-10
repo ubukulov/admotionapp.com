@@ -77,7 +77,7 @@ class UserController extends BaseController
             'pg_failure_url' => 'https://admotionapp.com/payment/error',
         ];
 
-        //$request['pg_testing_mode'] = 1; //add this parameter to request for testing payments
+//        $request['pg_testing_mode'] = 1; //add this parameter to request for testing payments
 
         //if you pass any of your parameters, which you want to get back after the payment, then add them. For example:
         $request['client_name'] = (empty(Auth::user()->first_name)) ? 'Admotion' : Auth::user()->first_name;

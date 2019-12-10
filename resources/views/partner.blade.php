@@ -13,6 +13,20 @@
                 <div class="pt_address">
                     <i class="fas fa-map-marker-alt"></i>&nbsp;{{ $partner->address }}
                 </div>
+                @if(Auth::check())
+                <div class="pr_pay" style="margin-top: 50px; border: 1px dashed #ccc; padding: 10px;">
+                    <h4>Форма оплаты</h4>
+                    <form action="{{ route('paybox.pay') }}" method="post">
+                        @csrf
+                        <div class="form-group">
+                            <input type="number" required min="500" class="form-control" name="amount" placeholder="Введите сумму">
+                        </div>
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-success">Оплатить</button>
+                        </div>
+                    </form>
+                </div>
+                @endif
             </div>
         </div>
     </div>

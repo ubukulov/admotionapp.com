@@ -30,7 +30,24 @@
             </form>
         </div>
         <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
-
+            <table class="table table-bordered">
+                <thead>
+                <th>ID</th>
+                <th>Наименование</th>
+                <th>Партнер</th>
+                <th>Кол-во</th>
+                </thead>
+                <tbody>
+                @foreach($user->gifts as $gift)
+                <tr>
+                    <td>{{ $gift->id }}</td>
+                    <td><img width="40" src="{{ $gift->gift->img() }}" alt="">&nbsp;&nbsp;{{ $gift->gift->title }}</td>
+                    <td>{{ $gift->gift->partner->title }}</td>
+                    <td>{{ $gift->qty }}</td>
+                </tr>
+                @endforeach
+                </tbody>
+            </table>
         </div>
         <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">
             <h4>Оплатит онлайн</h4>
@@ -46,6 +63,28 @@
                             <option value="{{ $partner->id }}">{{ $partner->title }}</option>
                         @endforeach
                     </select>
+                    <table class="table table-bordered" style="margin-top: 50px;">
+                        <thead>
+                            <th>ID</th>
+                            <th>Партнер</th>
+                            <th>Сумма</th>
+                            <th>Статус</th>
+                            <th>Действие</th>
+                        </thead>
+                        <tbody>
+                        @foreach($user->payments as $payment)
+                        <tr>
+                            <td>{{ $payment->id }}</td>
+                            <td>{{ $payment->partner_id }}</td>
+                            <td>{{ $payment->sum }}</td>
+                            <td>{{ $payment->status }}</td>
+                            <td>
+                                <a href="{{ route('payment_status', ['id' => $payment->id]) }}" class="btn btn-success">Проверить</a>
+                            </td>
+                        </tr>
+                        @endforeach
+                        </tbody>
+                    </table>
                 </div>
 
                 <div class="form-group">
