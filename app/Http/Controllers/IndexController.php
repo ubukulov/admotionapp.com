@@ -76,8 +76,9 @@ class IndexController extends BaseController
 
                     $sum = (int) $payment->sum;
 
-                    $gifts = Gift::where(['partner_id' => $payment->partner_id])->shuffle()->get();
-                    foreach ($gifts as $gift) {
+                    $result = Gift::where(['partner_id' => $payment->partner_id])->get();
+                    $gifts = $result->shuffle();
+                    foreach ($gifts->all() as $gift) {
                         $from = (int) $gift->from;
                         $to = (int) $gift->to;
                         $quantity = (int) $gift->quantity;
