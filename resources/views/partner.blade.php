@@ -4,7 +4,9 @@
         <div class="pt_bk">
             <div class="pt_im">
                 <img src="{{ $partner->img() }}" alt="">
-                <div class="discount_val">-70%</div>
+                @if(!empty($partner->discount))
+                <div class="discount_val">{{ $partner->discount }}</div>
+                @endif
             </div>
             <div class="pt_info">
                 <div class="pt_title">

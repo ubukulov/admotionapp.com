@@ -5,23 +5,27 @@
             <form action="{{ route('partner.update.profile', ['id' => $partner->id]) }}" method="post">
                 @csrf
                 <div class="form-group">
-                    <input type="text" class="form-control" name="title" value="{{ $partner->title }}">
+                    <input type="text" class="form-control" placeholder="Имя" name="title" value="{{ $partner->title }}">
                 </div>
 
                 <div class="form-group">
-                    <input type="text" class="form-control" name="phone" value="{{ $partner->phone }}">
+                    <input type="text" class="form-control" placeholder="Телефон" name="phone" value="{{ $partner->phone }}">
                 </div>
 
                 <div class="form-group">
-                    <input type="text" class="form-control" name="address" value="{{ $partner->address }}">
+                    <input type="text" class="form-control" placeholder="Адрес" name="address" value="{{ $partner->address }}">
                 </div>
 
                 <div class="form-group">
-                    <input type="email" class="form-control" name="email" disabled value="{{ $partner->email }}">
+                    <input type="email" class="form-control" placeholder="email" name="email" disabled value="{{ $partner->email }}">
                 </div>
 
                 <div class="form-group">
-                    <textarea name="description" cols="30" rows="5" class="form-control">{{ $partner->description }}</textarea>
+                    <textarea name="description" cols="30" rows="5" placeholder="Описание" class="form-control">{{ $partner->description }}</textarea>
+                </div>
+
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Скидка" name="discount" value="{{ $partner->discount }}">
                 </div>
 
                 <div class="form-group">
