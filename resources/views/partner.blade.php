@@ -33,7 +33,7 @@
     <div class="col-md-9">
         <div class="pt_content">
             <div class="pt_desc">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto magnam quidem deserunt aperiam dignissimos doloremque earum voluptatibus recusandae voluptatem, eos delectus molestiae tempora pariatur vero, mollitia facilis culpa est enim voluptates rem illo repudiandae similique. Nobis omnis, repudiandae temporibus dolorum blanditiis eveniet, explicabo minima maxime expedita numquam quae eaque. Labore harum molestias, explicabo cumque odit in exercitationem corrupti quibusdam repudiandae nostrum veritatis expedita consequuntur reprehenderit possimus dignissimos impedit cum voluptate inventore esse ipsam dolores? Nihil iste repellendus sunt error mollitia modi autem, magnam laborum nulla ducimus natus, consequatur, nobis quod omnis sequi eum non labore quis nisi nam odit necessitatibus rerum esse. Sint earum temporibus assumenda praesentium unde? Quidem incidunt numquam at, similique natus deserunt impedit nostrum voluptates dolorem eum, consectetur nisi labore corrupti dolorum. Recusandae dolorem accusantium vero voluptatem et non alias vitae magni, debitis dignissimos culpa rerum, incidunt neque veritatis voluptatum voluptate facere quas, sit autem provident fuga.
+                {{ $partner->description }}
             </div>
 
             <div class="info">

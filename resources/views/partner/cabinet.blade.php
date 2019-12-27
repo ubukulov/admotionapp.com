@@ -21,6 +21,10 @@
                 </div>
 
                 <div class="form-group">
+                    <textarea name="description" cols="30" rows="5" class="form-control">{{ $partner->description }}</textarea>
+                </div>
+
+                <div class="form-group">
                     <button type="submit" class="btn btn-success">Обновить профиль</button>
                 </div>
             </form>
