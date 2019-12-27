@@ -19,7 +19,7 @@
                     <form action="{{ route('paybox.pay') }}" method="post">
                         @csrf
                         <div class="form-group">
-                            <input type="number" required min="500" class="form-control" name="amount" placeholder="Введите сумму">
+                            <input type="number" required min="1" class="form-control" name="amount" placeholder="Введите сумму">
                         </div>
                         <div class="form-group">
                             <button type="submit" class="btn btn-success">Оплатить</button>
