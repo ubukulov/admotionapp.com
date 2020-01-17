@@ -61,7 +61,8 @@ class Partner extends Authenticatable
             ->join('user_gifts', 'user_gifts.user_id', '=', 'users.id')
             ->join('gifts', 'gifts.id', '=', 'user_gifts.gift_id')
             ->where(['gifts.partner_id' => $this->id])
-            ->groupBy('payments.id');
+            ->groupBy('payments.id')
+            ->get();
         return $orders;
     }
 }
