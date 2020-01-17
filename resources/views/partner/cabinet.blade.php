@@ -73,6 +73,49 @@
                 </tbody>
             </table>
         </div>
-        <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">...</div>
+        <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">
+            <table class="table table-bordered table-striped">
+                <thead>
+                <th>№</th>
+                <th>Клиент</th>
+                <th>Телефон</th>
+                <th>Приз</th>
+                <th>Кол-во</th>
+                <th>Сумма</th>
+                <th>Статус</th>
+                <th>Дата</th>
+                </thead>
+                <tbody>
+                @foreach($partner->historyOrders as $order)
+                    <tr>
+                        <td>{{ $order->id }}</td>
+                        <td>
+                            <span>{{ $order->name }}</span> <br>
+                            <span>{{ $order->email }}</span>
+                        </td>
+                        <td>
+                            {{ $order->phone }}
+                        </td>
+                        <td>
+                            {{ $order->gift_title }}
+                        </td>
+                        <td>
+                            {{ $order->qty }}
+                        </td>
+                        <td>
+                            {{ $order->sum }}
+                        </td>
+                        <td>
+                            @if($order->status == 'processing') Впроцессе @endif
+                            @if($order->active == 'ok') Успешно @endif
+                        </td>
+                        <td>
+                            {{ date("d.m.Y H:i", strtotime($order->updated_at)) }}
+                        </td>
+                    </tr>
+                @endforeach
+                </tbody>
+            </table>
+        </div>
     </div>
 @stop

@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Support\Facades\DB;
 
 class Partner extends Authenticatable
 {
@@ -50,5 +51,17 @@ class Partner extends Authenticatable
     public function categories()
     {
         return $this->belongsToMany('App\Models\Category', 'category_partners', 'partner_id', 'category_id');
+    }
+
+    public function historyOrders()
+    {
+        $orders = Payment::where(['payments.partner_id' => $this->id])
+            ->select(DB::raw('users.name, users.email, users.phone, gifts.title as gift_title, user_gifts.qty, payments.sum, payments.status, payments.updated_at, payments.id'))
+            ->join('users', 'users.id', '=', 'payments.user_id')
+            ->join('user_gifts', 'user_gifts.user_id', '=', 'users.id')
+            ->join('gifts', 'gifts.id', '=', 'user_gifts.gift_id')
+            ->where(['gifts.partner_id' => $this->id])
+            ->get();
+        return $orders;
     }
 }
