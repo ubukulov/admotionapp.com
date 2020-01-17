@@ -5,6 +5,10 @@
 
     .pt_im {
       margin-bottom: 10px;
+
+      img {
+        max-width: 100%;
+      }
       .discount_val {
         font-weight: bold;
         text-shadow: rgba(0, 0, 0, 0.3) 0px 0px 1px;

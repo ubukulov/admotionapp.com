@@ -11112,6 +11112,10 @@ a.text-dark:focus {
   margin-bottom: 10px;
 }
 
+.content .pt_bk .pt_im img {
+  max-width: 100%;
+}
+
 .content .pt_bk .pt_im .discount_val {
   font-weight: bold;
   text-shadow: rgba(0, 0, 0, 0.3) 0px 0px 1px;
