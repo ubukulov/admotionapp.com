@@ -90,6 +90,8 @@ class IndexController extends BaseController
                                 ]);
                                 $gift->quantity--;
                                 $gift->save();
+                                $payment->gift_id = $gift->id;
+                                $payment->save();
                                 break;
                             }
                         }
@@ -100,6 +102,8 @@ class IndexController extends BaseController
                                 ]);
                                 $gift->quantity--;
                                 $gift->save();
+                                $payment->gift_id = $gift->id;
+                                $payment->save();
                                 break;
                             }
                         }
@@ -110,6 +114,8 @@ class IndexController extends BaseController
                                 ]);
                                 $gift->quantity--;
                                 $gift->save();
+                                $payment->gift_id = $gift->id;
+                                $payment->save();
                                 break;
                             }
                         }
