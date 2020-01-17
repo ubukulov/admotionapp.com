@@ -59,6 +59,7 @@ class Partner extends Authenticatable
             ->select(DB::raw('users.name, users.email, users.phone, gifts.title as gift_title, payments.sum, payments.status, payments.updated_at, payments.id'))
             ->join('users', 'users.id', '=', 'payments.user_id')
             ->join('gifts', 'gifts.id', '=', 'payments.gift_id')
+            ->orderBy('payments.id', 'DESC')
             ->get();
         return $orders;
     }
