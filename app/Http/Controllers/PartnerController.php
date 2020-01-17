@@ -75,7 +75,7 @@ class PartnerController extends BaseController
             $hash_name = md5($file->getClientOriginalName());
             $file_name = $partner->id."_".$hash_name.'.jpg';
             $save_path = base_path('public/uploads/partners/');
-            $img->resize(null, 157)->save($save_path.$file_name);
+            $img->save($save_path.$file_name);
             $partner->image = $file_name;
             $partner->save();
             return redirect()->back();
