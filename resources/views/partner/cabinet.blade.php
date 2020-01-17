@@ -80,7 +80,6 @@
                 <th>Клиент</th>
                 <th>Телефон</th>
                 <th>Приз</th>
-                <th>Кол-во</th>
                 <th>Сумма</th>
                 <th>Статус</th>
                 <th>Дата</th>
@@ -98,9 +97,6 @@
                         </td>
                         <td>
                             {{ $order->gift_title }}
-                        </td>
-                        <td>
-                            {{ $order->qty }}
                         </td>
                         <td>
                             {{ $order->sum }}

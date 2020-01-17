@@ -56,10 +56,9 @@ class Partner extends Authenticatable
     public function historyOrders()
     {
         $orders = Payment::where(['payments.partner_id' => $this->id])
-            ->select(DB::raw('users.name, users.email, users.phone, gifts.title as gift_title, user_gifts.qty, payments.sum, payments.status, payments.updated_at, payments.id'))
+            ->select(DB::raw('users.name, users.email, users.phone, gifts.title as gift_title, payments.sum, payments.status, payments.updated_at, payments.id'))
             ->join('users', 'users.id', '=', 'payments.user_id')
             ->join('gifts', 'gifts.id', '=', 'payments.gift_id')
-            ->join('user_gifts', 'user_gifts.user_id', '=', 'payments.user_id')
             ->get();
         return $orders;
     }
