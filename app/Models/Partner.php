@@ -55,16 +55,14 @@ class Partner extends Authenticatable
 
     public function historyOrders()
     {
-//        $orders = Payment::where(['payments.partner_id' => $this->id])
-//            ->select(DB::raw('users.name, users.email, users.phone, gifts.title as gift_title, user_gifts.qty, payments.sum, payments.status, payments.updated_at, payments.id'))
-//            ->join('users', 'users.id', '=', 'payments.user_id')
-//            ->join('user_gifts', 'user_gifts.user_id', '=', 'users.id')
-//            ->join('gifts', 'gifts.id', '=', 'user_gifts.gift_id')
-//            ->where(['gifts.partner_id' => $this->id])
-//            ->groupBy('payments.id', 'users.id')
-//            ->get();
-        $id = $this->id;
-        $orders = DB::select("select users.name, users.email, users.phone, gifts.title as gift_title, user_gifts.qty, payments.sum, payments.status, payments.updated_at, payments.id from `payments` inner join `users` on `users`.`id` = `payments`.`user_id` inner join `user_gifts` on `user_gifts`.`user_id` = `users`.`id` inner join `gifts` on `gifts`.`id` = `user_gifts`.`gift_id` where (`payments`.`partner_id` = $id) and (`gifts`.`partner_id` = $id) group by `payments`.`id`, `users`.`id`");
+        $orders = Payment::where(['payments.partner_id' => $this->id])
+            ->select(DB::raw('gifts.title as gift_title, user_gifts.qty, payments.sum, payments.status, payments.updated_at, payments.id'))
+            ->join('users', 'users.id', '=', 'payments.user_id')
+            ->join('user_gifts', 'user_gifts.user_id', '=', 'users.id')
+            ->join('gifts', 'gifts.id', '=', 'user_gifts.gift_id')
+            ->where(['gifts.partner_id' => $this->id])
+            ->groupBy('payments.id')
+            ->get();
         return $orders;
     }
 }
