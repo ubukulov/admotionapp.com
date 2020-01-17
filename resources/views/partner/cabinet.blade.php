@@ -86,7 +86,7 @@
                 <th>Дата</th>
                 </thead>
                 <tbody>
-                @foreach($partner->historyOrders as $order)
+                @foreach($partner->historyOrders() as $order)
                     <tr>
                         <td>{{ $order->id }}</td>
                         <td>
