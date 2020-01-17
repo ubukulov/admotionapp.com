@@ -107,7 +107,7 @@
                         </td>
                         <td>
                             @if($order->status == 'processing') Впроцессе @endif
-                            @if($order->active == 'ok') Успешно @endif
+                            @if($order->status == 'ok') Успешно @endif
                         </td>
                         <td>
                             {{ date("d.m.Y H:i", strtotime($order->updated_at)) }}
