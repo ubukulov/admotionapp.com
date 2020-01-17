@@ -11114,6 +11114,7 @@ a.text-dark:focus {
 
 .content .pt_bk .pt_im img {
   max-width: 100%;
+  height: 200px;
 }
 
 .content .pt_bk .pt_im .discount_val {
