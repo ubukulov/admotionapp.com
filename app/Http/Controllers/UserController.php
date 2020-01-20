@@ -57,15 +57,14 @@ class UserController extends BaseController
     {
         $sum = (int) $request->input('sum');
         $partner_id = $request->input('partner_id');
+        $payment = Payment::create([
+            'user_id' => Auth::user()->id,
+            'partner_id' => $partner_id,
+            'sum' => $sum
+        ]);
 
         DB::beginTransaction();
         try {
-            $payment = Payment::create([
-                'user_id' => Auth::user()->id,
-                'partner_id' => $partner_id,
-                'sum' => $sum
-            ]);
-
             if ($payment) {
                 $lastInsertId = $payment->id;
 

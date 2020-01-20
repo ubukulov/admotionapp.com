@@ -42,14 +42,14 @@ class IndexController extends BaseController
         $partner_id = (int) $request->input('partner_id');
         $user_id = Auth::user()->id;
 
+        $payment = Payment::create([
+            'user_id' => $user_id,
+            'partner_id' => $partner_id,
+            'sum' => $amount
+        ]);
+
         DB::beginTransaction();
         try {
-            $payment = Payment::create([
-                'user_id' => $user_id,
-                'partner_id' => $partner_id,
-                'sum' => $amount
-            ]);
-
             if ($payment) {
                 $lastInsertId = $payment->id;
 
