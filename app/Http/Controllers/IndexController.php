@@ -53,7 +53,7 @@ class IndexController extends BaseController
 
     public function payment_success()
     {
-
+        return view('payment_success');
     }
 
     public function payment_status($id)
