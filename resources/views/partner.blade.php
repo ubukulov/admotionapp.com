@@ -20,6 +20,7 @@
                     <h4>Форма оплаты</h4>
                     <form action="{{ route('paybox.pay') }}" method="post">
                         @csrf
+                        <input type="hidden" name="partner_id" value="{{ $partner->id }}">
                         <div class="form-group">
                             <input type="number" required min="1" class="form-control" name="amount" placeholder="Введите сумму">
                         </div>
