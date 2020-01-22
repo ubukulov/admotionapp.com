@@ -36,6 +36,7 @@
                 <th>Наименование</th>
                 <th>Партнер</th>
                 <th>Кол-во</th>
+                <th>Дата</th>
                 </thead>
                 <tbody>
                 @foreach($user->gifts as $gift)
@@ -44,6 +45,7 @@
                     <td><img width="40" src="{{ $gift->gift->img() }}" alt="">&nbsp;&nbsp;{{ $gift->gift->title }}</td>
                     <td>{{ $gift->gift->partner->title }}</td>
                     <td>{{ $gift->qty }}</td>
+                    <td>{{ date("d.m.Y H:i", strtotime($gift->updated_at)) }}</td>
                 </tr>
                 @endforeach
                 </tbody>

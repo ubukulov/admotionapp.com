@@ -44,7 +44,7 @@
         </div>
         <div class="row">
             <div class="col-md-4">
-                <div class="profile-work">
+                <div class="profile-work" style="display: none;">
                     <p>WORK LINK</p>
                     <a href="">Website Link</a><br/>
                     <a href="">Bootsnipp Profile</a><br/>

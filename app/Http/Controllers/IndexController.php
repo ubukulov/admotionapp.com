@@ -60,7 +60,7 @@ class IndexController extends BaseController
                 'pg_salt' => $pg_salt,
                 'pg_order_id' => $lastInsertId,
                 'pg_description' => 'Описание заказа',
-                'pg_success_url' => 'https://admotionapp.com/payment',
+                'pg_success_url' => 'https://admotionapp.com/payment?pg_order_id='.$lastInsertId,
                 'pg_failure_url' => 'https://admotionapp.com/payment/error',
             ];
 
@@ -92,10 +92,20 @@ class IndexController extends BaseController
 
     public function payment_success()
     {
-        return view('payment_success');
+        $success = false;
+        if ($_GET['pg_order_id']) {
+            $last_payment_id = $_GET['pg_order_id'];
+            if ($status = $this->getPayoxStatus($last_payment_id)) {
+                if ($status == 'ok') {
+                    $this->payment_status($last_payment_id);
+                    $success = true;
+                }
+            }
+        }
+        return view('payment_success', compact('success'));
     }
 
-    public function payment_status($id)
+    public function getPayoxStatus($id)
     {
         $paybox = new Paybox();
         //set required properties
@@ -104,7 +114,13 @@ class IndexController extends BaseController
             ->setSecretKey(env('PG_SALT'));
 
         $paybox->order->id = $id;
-        $paymentStatus = $paybox->getStatus();
+        return $paybox->getStatus();
+    }
+
+    public function payment_status($id)
+    {
+        $paymentStatus = $this->getPayoxStatus($id);
+
         if ($paymentStatus == 'ok') {
             $payment = Payment::findOrFail($id);
             if ($payment) {
