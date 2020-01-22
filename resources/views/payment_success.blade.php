@@ -1,11 +1,14 @@
 @extends('layouts.app')
 @section('content')
-    <div class="mb-5">
-        <i class="fas fa-check-circle"></i>
-    </div>
 
-    <div>
-        Поздравляем, оплата прошла успешно!
+    <div class="col-md-12">
+        <div class="mb-3 text-center">
+            <i class="fas fa-check-circle" style="font-size: 60px; color: green;"></i>
+        </div>
+
+        <div style="font-size: 20px; text-align: center;">
+            Поздравляем, оплата прошла успешно!
+        </div>
     </div>
 
     @if($success)
