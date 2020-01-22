@@ -93,7 +93,7 @@ class IndexController extends BaseController
     public function payment_success()
     {
         $success = false;
-        if ($_GET['pg_order_id']) {
+        if (isset($_GET['pg_order_id']) && $_GET['pg_order_id']) {
             $last_payment_id = $_GET['pg_order_id'];
             if ($status = $this->getPayoxStatus($last_payment_id)) {
                 if ($status == 'ok') {
