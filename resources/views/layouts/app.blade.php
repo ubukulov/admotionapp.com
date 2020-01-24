@@ -27,7 +27,7 @@
         <!-- Modal -->
         <div class="modal fade" id="quick_pay" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
-                <form action="" method="post">
+                <form action="{{ route('paybox.pay') }}" method="post">
                     @csrf
                     <div class="modal-content">
                         <div class="modal-header">
@@ -40,22 +40,22 @@
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <input type="text" name="partner_id" placeholder="ИД партнера" required>
+                                        <input type="text" class="form-control" name="partner_id" placeholder="ИД партнера" required>
                                     </div>
 
                                     <div class="form-group">
-                                        <input type="text" name="amount" required placeholder="Сумма">
+                                        <input type="text" class="form-control" name="amount" required placeholder="Сумма">
                                     </div>
 
                                     <div class="form-group">
-                                        <input type="text" name="phone" required placeholder="Ваш номер телефона">
+                                        <input type="text" class="form-control" name="phone" required placeholder="Ваш номер телефона">
                                     </div>
                                 </div>
                             </div>
                         </div>
 
                         <div class="modal-footer text-center">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Закрыть</button>
+                            <button type="submit" class="btn btn-success">Оплатить сейчас</button>
                         </div>
                     </div>
                 </form>
