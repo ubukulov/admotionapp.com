@@ -17,7 +17,7 @@
 
             <div class="form-group">
                 <div class="form-check">
-                    <input class="form-check-input" type="checkbox" id="gridCheck">
+                    <input class="form-check-input" type="checkbox" checked id="gridCheck">
                     <label class="form-check-label" for="gridCheck">
                         *подтверждая регистрацию, Вы автоматически соглашаетесь с <a href="/files/Оферта_сайта_admotionapp.com.docx" target="_blank">публичной офертой</a>
                     </label>
