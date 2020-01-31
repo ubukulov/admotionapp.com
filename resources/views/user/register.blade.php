@@ -8,6 +8,10 @@
             </div>
 
             <div class="form-group">
+                <input type="text" name="phone" class="form-control" required placeholder="Ваш телефон">
+            </div>
+
+            <div class="form-group">
                 <input type="email" class="form-control" name="email" required placeholder="Email">
             </div>
 
