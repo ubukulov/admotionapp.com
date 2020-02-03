@@ -49,6 +49,6 @@ class User extends Authenticatable
 
     public function gifts()
     {
-        return $this->hasMany('App\Models\UserGift', 'user_id');
+        return $this->hasMany('App\Models\UserGift', 'user_id')->orderBy('id', 'DESC');
     }
 }
