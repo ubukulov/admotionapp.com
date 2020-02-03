@@ -197,4 +197,10 @@ class IndexController extends BaseController
             }
         }
     }
+
+    public function send_me_test_sms()
+    {
+        $smsc = new SMSC_SMPP();
+        $smsc->send_sms('87772504794', "Платеж успешно прошло. Ваш код: 123");
+    }
 }
