@@ -23,4 +23,9 @@ class Payment extends Model
     {
         return $this->hasOne('App\Models\Partner', 'id', 'partner_id');
     }
+
+    public function gift()
+    {
+        return $this->hasOne('App\Models\Gift', 'id', 'gift_id');
+    }
 }

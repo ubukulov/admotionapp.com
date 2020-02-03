@@ -4,7 +4,7 @@
         <form action="{{ route('user.registration') }}" method="post">
             @csrf
             <div class="form-group">
-                <input type="text" class="form-control" name="name" required placeholder="Ваш ник">
+                <input type="text" class="form-control" name="first_name" required placeholder="Ваше имя">
             </div>
 
             <div class="form-group">

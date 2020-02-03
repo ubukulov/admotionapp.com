@@ -10,6 +10,8 @@ use Illuminate\Http\Request;
 use Auth;
 use Illuminate\Support\Facades\DB;
 use Paybox\Pay\Facade as Paybox;
+use Illuminate\Support\Str;
+use App\Classes\SMSC_SMPP;
 
 class IndexController extends BaseController
 {
@@ -93,8 +95,10 @@ class IndexController extends BaseController
     public function payment_success()
     {
         $success = false;
+        $payment = null;
         if (isset($_GET['pg_order_id']) && $_GET['pg_order_id']) {
             $last_payment_id = $_GET['pg_order_id'];
+            $payment = Payment::findOrFail($last_payment_id);
             if ($status = $this->getPayoxStatus($last_payment_id)) {
                 if ($status == 'ok') {
                     $this->payment_status($last_payment_id);
@@ -102,7 +106,7 @@ class IndexController extends BaseController
                 }
             }
         }
-        return view('payment_success', compact('success'));
+        return view('payment_success', compact('success', 'payment'));
     }
 
     public function getPayoxStatus($id)
@@ -123,7 +127,7 @@ class IndexController extends BaseController
 
         if ($paymentStatus == 'ok') {
             $payment = Payment::findOrFail($id);
-            if ($payment) {
+            if ($payment && $payment->status != 'ok') {
                 DB::beginTransaction();
                 try {
                     $payment->status = 'ok';
@@ -133,6 +137,8 @@ class IndexController extends BaseController
 
                     $result = Gift::where(['partner_id' => $payment->partner_id])->get();
                     $gifts = $result->shuffle();
+                    // сгенерируем случайный код
+                    $sms_code = Str::random(6);
                     foreach ($gifts->all() as $gift) {
                         $from = (int) $gift->from;
                         $to = (int) $gift->to;
@@ -144,6 +150,7 @@ class IndexController extends BaseController
                                     'gift_id' => $gift->id, 'user_id' => $payment->user_id, 'qty' => 1
                                 ]);
                                 $gift->quantity--;
+                                $gift->sms_code = $sms_code;
                                 $gift->save();
                                 $payment->gift_id = $gift->id;
                                 $payment->save();
@@ -156,6 +163,7 @@ class IndexController extends BaseController
                                     'gift_id' => $gift->id, 'user_id' => $payment->user_id, 'qty' => 1
                                 ]);
                                 $gift->quantity--;
+                                $gift->sms_code = $sms_code;
                                 $gift->save();
                                 $payment->gift_id = $gift->id;
                                 $payment->save();
@@ -168,6 +176,7 @@ class IndexController extends BaseController
                                     'gift_id' => $gift->id, 'user_id' => $payment->user_id, 'qty' => 1
                                 ]);
                                 $gift->quantity--;
+                                $gift->sms_code = $sms_code;
                                 $gift->save();
                                 $payment->gift_id = $gift->id;
                                 $payment->save();
@@ -175,6 +184,10 @@ class IndexController extends BaseController
                             }
                         }
                     }
+
+                    $smsc = new SMSC_SMPP();
+                    $smsc->send_sms($payment->user->phone, "Платеж успешно прошло. Ваш код: $sms_code");
+
                     DB::commit();
                     return redirect()->back();
                 } catch (\Exception $e) {

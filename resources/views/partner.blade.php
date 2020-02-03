@@ -15,6 +15,9 @@
                 <div class="pt_address">
                     <i class="fas fa-map-marker-alt"></i>&nbsp;{{ $partner->address }}
                 </div>
+                <div class="pt_phone">
+                    <i class="fas fa-mobile-alt"></i>&nbsp;{{ $partner->phone }}
+                </div>
                 @if(Auth::check())
                 <div class="pr_pay" style="margin-top: 50px; border: 1px dashed #ccc; padding: 10px;">
                     <h4>Форма оплаты</h4>

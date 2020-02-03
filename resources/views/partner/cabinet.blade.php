@@ -42,6 +42,7 @@
                 <th>Описание</th>
                 <th>Условия</th>
                 <th>Кол-во</th>
+                <th>SMS_CODE</th>
                 <th>Статус</th>
                 <th>Дата</th>
                 </thead>
@@ -61,6 +62,7 @@
                     <td>
                         {{ $gift->quantity }} &nbsp;шт.
                     </td>
+                    <td>{{ $gift->sms_code }}</td>
                     <td>
                         @if($gift->active == 1) Активно @endif
                         @if($gift->active == 0) Не активно @endif

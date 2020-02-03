@@ -12,6 +12,15 @@
     </div>
 
     @if($success)
+        @php
+            if (!empty($payment)) {
+                $gift_title = (!empty($payment->gift)) ? $payment->gift->title : '';
+                $gift_partner = (!empty($payment->partner)) ? $payment->partner->title : '';
+            } else {
+                $gift_title = '';
+                $gift_partner = '';
+            }
+        @endphp
     <!-- Modal -->
     <div class="modal" id="thank_you" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
@@ -23,7 +32,7 @@
                     </button>
                 </div>
                 <div class="modal-body text-center">
-                    <p>Вы выиграли приз: большая чашка капучино от Coffeedelia. </p>
+                    <p>Вы выиграли приз: {{ $gift_title }} от {{ $gift_partner }}. </p>
                     <p>Также Вам поступит sms с кодом, которое необходимо предъявить партнёру для получения подарка</p>
 
                     <p>Sms код партнёр сравнивает с кодом в кабинете, нажимает кнопку "Вручил" и выдаёт приз</p>

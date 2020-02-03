@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Gift extends Model
 {
     protected $fillable = [
-        'partner_id', 'title', 'description', 'image', 'from', 'to', 'quantity', 'active'
+        'partner_id', 'title', 'description', 'image', 'from', 'to', 'quantity', 'active', 'sms_code'
     ];
 
     public function img()

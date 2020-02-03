@@ -40,7 +40,7 @@ class Partner extends Authenticatable
 
     public function gifts()
     {
-        return $this->hasMany('App\Models\Gift', 'partner_id');
+        return $this->hasMany('App\Models\Gift', 'partner_id')->orderBy('id', 'DESC');
     }
 
     public function img()
