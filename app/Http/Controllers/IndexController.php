@@ -11,7 +11,6 @@ use Auth;
 use Illuminate\Support\Facades\DB;
 use Paybox\Pay\Facade as Paybox;
 use Illuminate\Support\Str;
-use App\Classes\SMSC_SMPP;
 
 class IndexController extends BaseController
 {
@@ -185,8 +184,9 @@ class IndexController extends BaseController
                         }
                     }
 
-                    $smsc = new SMSC_SMPP();
-                    $smsc->send_sms($payment->user->phone, "Платеж успешно прошло. Ваш код: $sms_code");
+                    $client = new \SoapClient('https://smsc.kz/sys/soap.php?wsdl');
+                    $msg = "Платеж успешно прошло. Ваш код: $sms_code";
+                    $client->send_sms(array('login' => 'trendokz@gmail.com', 'psw' => '!Q2w3e$R', 'phones'=> $payment->user->phone, 'mes' => $msg, 'sender' => 'admotionapp'));
 
                     DB::commit();
                     return redirect()->back();
