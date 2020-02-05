@@ -198,9 +198,12 @@ class IndexController extends BaseController
         }
     }
 
-    public function send_me_test_sms()
+    public function send_me_test_sms($phone)
     {
-        $smsc = new SMSC_SMPP();
-        $smsc->send_sms('87772504794', "Платеж успешно прошло. Ваш код: 123");
+        $sms_code = Str::random(6);
+        $client = new \SoapClient('https://smsc.kz/sys/soap.php?wsdl');
+        $msg = "Платеж успешно прошло. Ваш код: $sms_code";
+        $res = $client->send_sms(array('login' => 'trendokz@gmail.com', 'psw' => '!Q2w3e$R', 'phones'=> $phone, 'mes' => $msg, 'sender' => 'admotionapp'));
+        var_dump($res);
     }
 }
