@@ -10,6 +10,9 @@
                 $gift_partner = '';
             }
         @endphp
+        <script>
+            $("#thank_you").modal();
+        </script>
     <!-- Modal -->
     <div class="modal" id="thank_you" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
@@ -21,8 +24,10 @@
                     </button>
                 </div>
                 <div class="modal-body text-center">
-                    <i class="fas fa-check-circle" style="font-size: 60px; color: green;"></i>
-                    <p>Вы выиграли приз: {{ $gift_title }} от {{ $gift_partner }}. </p>
+                    <div class="text-center mb-4">
+                        <i class="fas fa-check-circle" style="font-size: 60px; color: green;"></i>
+                    </div>
+                    <p><strong>Вы выиграли приз</strong>: {{ $gift_title }} от <strong>{{ $gift_partner }}</strong>. </p>
                     <p>Также Вам поступит sms с кодом, которое необходимо предъявить партнёру для получения подарка</p>
 
                     <p>Sms код партнёр сравнивает с кодом в кабинете, нажимает кнопку "Вручил" и выдаёт приз</p>
