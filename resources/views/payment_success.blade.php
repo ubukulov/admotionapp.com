@@ -12,19 +12,21 @@
         @endphp
 
         <div class="col-md-12">
-            <div class="text-center mb-4">
-                <i class="fas fa-check-circle" style="font-size: 60px; color: green;"></i>
+            <div style="width: 700px; margin: 0 auto;">
+                <div class="text-center mb-4">
+                    <i class="fas fa-check-circle" style="font-size: 60px; color: green;"></i>
+                </div>
+                <p>Поздравляем, {{ $payment->user->first_name }}, Ваша оплата на сумму {{ $payment->sum }}тг прошла успешно!</p>
+                <p><strong>Вы выиграли приз</strong>: {{ $gift_title }} от <strong>{{ $gift_partner }}</strong>. </p>
+                <p>Также Вам поступит sms с кодом, которое необходимо предъявить партнёру для получения подарка</p>
+
+
+                <p><strong>Внимание!</strong></p>
+                <p>Если оплата не прошла, нажмите эту <a href="{{ route('payment_status', ['id' => $payment->id]) }}" class="btn btn-success">Проверить</a></p>
+
+
+                <p>Sms код партнёр сравнивает с кодом в кабинете, нажимает кнопку "Вручил" и выдаёт приз</p>
             </div>
-            <p>Поздравляем, {{ $payment->user->first_name }}, Ваша оплата на сумму {{ $payment->sum }}тг прошла успешно!</p>
-            <p><strong>Вы выиграли приз</strong>: {{ $gift_title }} от <strong>{{ $gift_partner }}</strong>. </p>
-            <p>Также Вам поступит sms с кодом, которое необходимо предъявить партнёру для получения подарка</p>
-
-
-            <p><strong>Внимание!</strong></p>
-            <p>Если оплата не прошла, нажмите эту <a href="{{ route('payment_status', ['id' => $payment->id]) }}" class="btn btn-success">Проверить</a></p>
-
-
-            <p>Sms код партнёр сравнивает с кодом в кабинете, нажимает кнопку "Вручил" и выдаёт приз</p>
         </div>
     @endif
 @stop
