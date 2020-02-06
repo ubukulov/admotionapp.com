@@ -10,9 +10,6 @@
                 $gift_partner = '';
             }
         @endphp
-        <script>
-            $("#thank_you").modal();
-        </script>
     <!-- Modal -->
     <div class="modal" id="thank_you" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
@@ -39,5 +36,11 @@
             </div>
         </div>
     </div>
+
+    <script>
+        $(document).ready(function(){
+            $("#thank_you").modal();
+        });
+    </script>
     @endif
 @stop
