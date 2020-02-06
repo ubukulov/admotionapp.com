@@ -43,12 +43,12 @@
         </div>
     </div>
 
-        @push('scripts')
-        <script type="text/javascript">
+        @php
+        echo "<script type='text/javascript'>
                 setTimeout(function(){
-                    $("#thank_you").modal();
+                    $('#thank_you').modal();
                 }, 2000);
-        </script>
-        @endpush
+        </script>";
+        @endphp
     @endif
 @stop
