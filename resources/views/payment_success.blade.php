@@ -45,9 +45,9 @@
 
         @push('scripts')
             <script>
-            $(document).ready(function(){
-                $("#thank_you").modal();
-            });
+                setTimeout(function(){
+                    $("#thank_you").modal();
+                }, 2000);
         </script>
         @endpush
     @endif
