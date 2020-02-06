@@ -1,16 +1,5 @@
 @extends('layouts.app')
 @section('content')
-
-    <div class="col-md-12">
-        <div class="mb-3 text-center">
-            <i class="fas fa-check-circle" style="font-size: 60px; color: green;"></i>
-        </div>
-
-        <div style="font-size: 20px; text-align: center;">
-            Поздравляем, оплата прошла успешно!
-        </div>
-    </div>
-
     @if($success)
         @php
             if (!empty($payment)) {
@@ -32,6 +21,7 @@
                     </button>
                 </div>
                 <div class="modal-body text-center">
+                    <i class="fas fa-check-circle" style="font-size: 60px; color: green;"></i>
                     <p>Вы выиграли приз: {{ $gift_title }} от {{ $gift_partner }}. </p>
                     <p>Также Вам поступит sms с кодом, которое необходимо предъявить партнёру для получения подарка</p>
 
