@@ -28,10 +28,10 @@
                     <p><strong>Вы выиграли приз</strong>: {{ $gift_title }} от <strong>{{ $gift_partner }}</strong>. </p>
                     <p>Также Вам поступит sms с кодом, которое необходимо предъявить партнёру для получения подарка</p>
 
-                    @if($payment->status != 'ok')
+
                     <p><strong>Внимание!</strong></p>
                     <p>Если оплата не прошла, нажмите эту <a href="{{ route('payment_status', ['id' => $payment->id]) }}" class="btn btn-success">Проверить</a></p>
-                    @endif
+
 
                     <p>Sms код партнёр сравнивает с кодом в кабинете, нажимает кнопку "Вручил" и выдаёт приз</p>
                 </div>
@@ -43,10 +43,12 @@
         </div>
     </div>
 
-    <script>
-        $(document).ready(function(){
-            $("#thank_you").modal();
-        });
-    </script>
+        @push('scripts')
+            <script>
+            $(document).ready(function(){
+                $("#thank_you").modal();
+            });
+        </script>
+        @endpush
     @endif
 @stop
