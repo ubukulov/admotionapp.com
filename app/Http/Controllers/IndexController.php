@@ -186,7 +186,7 @@ class IndexController extends BaseController
 
                     $client = new \SoapClient('https://smsc.kz/sys/soap.php?wsdl');
                     $msg = "Платеж успешно прошло. Ваш код: $sms_code";
-                    $client->send_sms(array('login' => 'trendokz@gmail.com', 'psw' => '!Q2w3e$R', 'phones'=> $payment->user->phone, 'mes' => $msg, 'sender' => 'admotionapp'));
+                    $client->send_sms(array('login' => 'Admotion', 'psw' => '!Q2w3e$R', 'phones'=> $payment->user->phone, 'mes' => $msg, 'sender' => 'admotionapp'));
 
                     DB::commit();
                     return redirect()->back();
@@ -203,7 +203,7 @@ class IndexController extends BaseController
         $sms_code = Str::random(6);
         $client = new \SoapClient('https://smsc.kz/sys/soap.php?wsdl');
         $msg = "Платеж успешно прошло. Ваш код: $sms_code";
-        $res = $client->send_sms(array('login' => 'trendokz@gmail.com', 'psw' => '!Q2w3e$R', 'phones'=> $phone, 'mes' => $msg, 'sender' => 'admotionapp'));
+        $res = $client->send_sms(array('login' => 'Admotion', 'psw' => '!Q2w3e$R', 'phones'=> $phone, 'mes' => $msg, 'sender' => 'admotionapp'));
         var_dump($res);
     }
 }
