@@ -12,7 +12,7 @@
         @endphp
 
         <div class="col-md-12">
-            <div style="width: 700px; margin: 0 auto;">
+            <div class="text-center" style="width: 700px; margin: 0 auto; max-width: 100%;">
                 <div class="text-center mb-4">
                     <i class="fas fa-check-circle" style="font-size: 60px; color: green;"></i>
                 </div>
@@ -21,8 +21,7 @@
                 <p>Также Вам поступит sms с кодом, которое необходимо предъявить партнёру для получения подарка</p>
 
 
-                <p><strong>Внимание!</strong></p>
-                <p>Если оплата не прошла, нажмите эту <a href="{{ route('payment_status', ['id' => $payment->id]) }}" class="btn btn-success">Проверить</a></p>
+                <p><strong>Внимание!</strong>&nbsp;&nbsp; оплата не прошла, нажмите эту &nbsp;&nbsp;<a href="{{ route('payment_status', ['id' => $payment->id]) }}" class="btn btn-success">Проверить</a></p>
 
 
                 <p>Sms код партнёр сравнивает с кодом в кабинете, нажимает кнопку "Вручил" и выдаёт приз</p>
