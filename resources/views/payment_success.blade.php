@@ -44,7 +44,7 @@
     </div>
 
         @push('scripts')
-            <script>
+        <script type="text/javascript">
                 setTimeout(function(){
                     $("#thank_you").modal();
                 }, 2000);
