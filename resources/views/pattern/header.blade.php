@@ -40,14 +40,14 @@
 
                 <li class="nav-item">
                     @if(!Auth::check() && !Auth::guard('partner')->check())
-                        <a class="nav-link" href="{{ route('user.login') }}">Войти</a>
+                        <a class="nav-link" href="{{ route('login') }}">Войти</a>
                     @else
                         <a class="nav-link" href="{{ route('logout') }}">Выход</a>
                     @endif
                 </li>
                 @if(!Auth::check() && !Auth::guard('partner')->check())
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('user.register') }}">Зарегистрироваться</a>
+                    <a class="nav-link" href="{{ route('register') }}">Зарегистрироваться</a>
                 </li>
                 @endif
             </ul>

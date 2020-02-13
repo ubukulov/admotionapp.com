@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Gift extends Model
 {
     protected $fillable = [
-        'partner_id', 'title', 'description', 'image', 'from', 'to', 'quantity', 'active', 'sms_code'
+        'stock_id', 'title', 'description', 'image', 'from', 'to', 'quantity', 'active', 'sms_code'
     ];
 
     public function img()
@@ -34,8 +34,8 @@ class Gift extends Model
         }
     }
 
-    public function partner()
+    public function stock()
     {
-        return $this->belongsTo('App\Models\Partner');
+        return $this->belongsTo('App\Models\Stock');
     }
 }

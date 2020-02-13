@@ -43,6 +43,11 @@ class Partner extends Authenticatable
         return $this->hasMany('App\Models\Gift', 'partner_id')->orderBy('id', 'DESC');
     }
 
+    public function stocks()
+    {
+        return $this->hasMany('App\Models\Stock', 'partner_id')->orderBy('id', 'DESC');
+    }
+
     public function img()
     {
         return asset('uploads/partners/'.$this->image);
@@ -56,7 +61,7 @@ class Partner extends Authenticatable
     public function historyOrders()
     {
         $orders = Payment::where(['payments.partner_id' => $this->id])
-            ->select(DB::raw('users.name, users.email, users.phone, gifts.title as gift_title, payments.sum, payments.status, payments.updated_at, payments.id'))
+            ->select(DB::raw('users.first_name, users.email, users.phone, gifts.title as gift_title, payments.sum, payments.status, payments.updated_at, payments.id'))
             ->join('users', 'users.id', '=', 'payments.user_id')
             ->join('gifts', 'gifts.id', '=', 'payments.gift_id')
             ->orderBy('payments.id', 'DESC')

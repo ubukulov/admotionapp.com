@@ -35,11 +35,16 @@ class Category extends Model
 
     public function url()
     {
-        return route('category.show', ['alias' => $this->alias, 'id' => $this->id]);
+        return route('category.show', ['alias' => $this->alias]);
     }
 
     public function partners()
     {
         return $this->belongsToMany('App\Models\Partner', 'category_partners', 'category_id', 'partner_id');
+    }
+
+    public function stocks()
+    {
+        return $this->hasMany('App\Models\Stock', 'category_id');
     }
 }

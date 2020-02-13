@@ -1,14 +1,9 @@
 <?php
 # Маршруты для пользователей
-Route::group(['prefix' => 'user'], function(){
-    Route::get('login', 'UserController@login')->name('user.login');
-    Route::post('authenticate', 'UserController@authenticate')->name('user.authenticate');
-    Route::get('register', 'UserController@register')->name('user.register');
-    Route::post('registration', 'UserController@registration')->name('user.registration');
-
-    Route::group(['middleware' => 'auth'], function(){
-        Route::get('cabinet', 'UserController@cabinet')->name('user.cabinet');
-        Route::post('/profile', 'UserController@profile')->name('user.profile');
-        Route::post('/payment', 'UserController@payment')->name('user.payment');
-    });
+Route::group(['middleware' => 'auth', 'prefix' => 'user'], function(){
+    Route::get('cabinet', 'UserController@cabinet')->name('user.cabinet');
+    Route::post('/profile', 'UserController@profile')->name('user.profile');
+    Route::post('/payment', 'UserController@payment')->name('user.payment');
+    Route::get('/payment', 'UserController@payment_form')->name('user.payment_form');
+    Route::get('/gifts', 'UserController@gifts')->name('user.gifts');
 });

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Gift;
 use App\Models\Partner;
 use App\Models\Payment;
+use App\Models\Stock;
 use App\Models\UserGift;
 use Illuminate\Http\Request;
 use Auth;
@@ -16,14 +17,8 @@ class IndexController extends BaseController
 {
     public function welcome()
     {
-        return view('welcome', ['partners' => Partner::all()]);
-    }
-
-    public function logout()
-    {
-        Auth::logout();
-        Auth::guard('partner')->logout();
-        return redirect()->route('home');
+        $stocks = Stock::all();
+        return view('welcome', compact('stocks'));
     }
 
     public function partners()
@@ -34,7 +29,7 @@ class IndexController extends BaseController
     public function partner($id)
     {
         $partner = Partner::findOrFail($id);
-        return view('partner', compact('partner'));
+        return view('partner_stocks', compact('partner'));
     }
 
     public function paybox(Request $request)
@@ -205,5 +200,11 @@ class IndexController extends BaseController
         $msg = "Платеж успешно прошло. Ваш код: $sms_code";
         $res = $client->send_sms(array('login' => 'Admotion', 'psw' => '!Q2w3e$R', 'phones'=> $phone, 'mes' => $msg, 'sender' => 'admotionapp'));
         var_dump($res);
+    }
+
+    public function stock_show($id)
+    {
+        $stock = Stock::findOrFail($id);
+        return view('stock', compact('stock'));
     }
 }

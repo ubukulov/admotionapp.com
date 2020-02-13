@@ -1,22 +1,24 @@
 @extends('layouts.app')
 @section('content')
-    @foreach($category->partners as $partner)
+    @foreach($category->stocks as $stock)
         <div class="col-md-3">
             <div class="pt_bk">
-                <a href="{{ route('partner.show', ['id' => $partner->id]) }}">
+                <a href="{{ route('stock.show', ['id' => $stock->id]) }}">
                     <div class="pt_im">
-                        <img src="{{ $partner->img() }}" alt="">
-                        <div class="discount_val">-70%</div>
+                        <img src="{{ $stock->img() }}" alt="">
+                        @if(!empty($stock->discount))
+                            <div class="discount_val">{{ $stock->discount }}</div>
+                        @endif
                     </div>
                 </a>
                 <div class="pt_info">
                     <div class="pt_title">
-                        <a href="{{ route('partner.show', ['id' => $partner->id]) }}">
-                            <i class="fas fa-building"></i>&nbsp;{{ $partner->title }}
+                        <a href="{{ route('stock.show', ['id' => $stock->id]) }}">
+                            {{ $stock->title }}
                         </a>
                     </div>
                     <div class="pt_address">
-                        <i class="fas fa-map-marker-alt"></i>&nbsp;{{ $partner->address }}
+                        <a href="{{ route('stock.show', ['id' => $stock->id]) }}" class="btn btn-dark">подробное</a>
                     </div>
                 </div>
             </div>
