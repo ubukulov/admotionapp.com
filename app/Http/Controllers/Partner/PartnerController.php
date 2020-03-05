@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Partner;
 use App\Http\Controllers\BaseController;
 use App\Models\Gift;
 use App\Models\Partner;
+use App\Models\Stock;
 use Illuminate\Http\Request;
 use Auth;
 
@@ -41,9 +42,9 @@ class PartnerController extends BaseController
         }
     }
 
-    public function createGift()
+    public function createGift($stock_id)
     {
-        return view('partner.create_gift');
+        return view('partner.create_gift', compact('stock_id'));
     }
 
     public function storeGift(Request $request)
@@ -57,7 +58,6 @@ class PartnerController extends BaseController
             $file_name = $partner->id."_".$hash_name.'.jpg';
             $save_path = base_path('public/uploads/gifts/');
             $img->resize(150, 150)->save($save_path.$file_name);
-            $data['partner_id'] = $partner->id;
             $data['image'] = $file_name;
             Gift::create($data);
             return redirect()->route('partner.cabinet');
@@ -70,9 +70,13 @@ class PartnerController extends BaseController
         return view('partner.orders', compact('orders'));
     }
 
-    public function gifts()
+    public function gifts($stock_id)
     {
-        return view('partner.gifts');
+        $stock = Stock::findOrFail($stock_id);
+        return view('partner.gifts', [
+            'partner' => Auth::guard('partner')->user(),
+            'stock' => $stock
+        ]);
     }
 
     public function logout()

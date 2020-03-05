@@ -1,11 +1,13 @@
 @extends('partner.partner')
 @section('partner')
-    <a href="{{ route('create.gift') }}"><i class="fa fa-edit"></i>&nbsp;Добавить приз</a> <br><br>
+    <h4>Акция - {{ $stock->title }}</h4>
+
+    <hr>
+
+    <a href="{{ route('create.gift', ['id' => $stock->id]) }}"><i class="fa fa-edit"></i>&nbsp;Добавить приз</a> <br><br>
     <table class="table table-bordered table-striped">
         <thead>
-        <th>Номер</th>
         <th>Приз</th>
-        <th>Описание</th>
         <th>Условия</th>
         <th>Кол-во</th>
         <th>SMS_CODE</th>
@@ -13,14 +15,17 @@
         <th>Дата</th>
         </thead>
         <tbody>
-        @foreach($partner->gifts as $gift)
+        @foreach($stock->gifts as $gift)
             <tr>
-                <td>{{ $gift->id }}</td>
                 <td>
-                    <img src="{{ $gift->img() }}" alt="" align="left">&nbsp;{{ $gift->title }}
-                </td>
-                <td>
-                    {{ $gift->description }}
+                    <div>
+                        <img style="margin-right: 10px;" src="{{ $gift->img() }}" alt="">&nbsp;
+                    </div>
+
+                    <div>
+                        # {{ $gift->id }}
+                        {{ $gift->title }}
+                    </div>
                 </td>
                 <td>
                     {{ $gift->condition() }}

@@ -13,10 +13,8 @@
         <th>№</th>
         <th>Наименование</th>
         <th>Телефон</th>
-        <th>Краткое описание</th>
-        <th>Начало</th>
-        <th>Конец</th>
         <th>Статус</th>
+        <th>Подарки</th>
         <th>Дата</th>
         </thead>
         <tbody>
@@ -30,17 +28,11 @@
                     {{ $stock->phone }}
                 </td>
                 <td>
-                    {{ $stock->short_description }}
-                </td>
-                <td>
-                    {{ date('d.m.Y', strtotime($stock->start)) }}
-                </td>
-                <td>
-                    {{ date('d.m.Y', strtotime($stock->end)) }}
-                </td>
-                <td>
                     @if($stock->active == 0) Не активен @endif
                     @if($stock->active == 1) Активно @endif
+                </td>
+                <td>
+                    <a href="{{ route('list.gifts', ['id' => $stock->id]) }}"><i class="fa fa-eye"></i></a>
                 </td>
                 <td>
                     {{ date("d.m.Y", strtotime($stock->created_at)) }}

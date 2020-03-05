@@ -2,6 +2,7 @@
 @section('partner')
     <form action="{{ route('store.gift') }}" method="post" enctype="multipart/form-data">
         @csrf
+        <input type="hidden" name="stock_id" value="{{ $stock_id }}">
         <div class="form-group">
             <input type="text" name="title" class="form-control" required placeholder="Наименование приза">
         </div>
