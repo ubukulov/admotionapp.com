@@ -49,6 +49,8 @@ class AuthController extends BaseController
                     Auth::guard('partner')->logout();
                 }
                 return redirect()->route('user.cabinet');
+            } else {
+                return back()->with('error', 'Логин или пароль не правильно');
             }
         } else {
             if (Auth::guard('partner')->attempt(['phone' => $data['phone'], 'password' => $data['password']])) {
@@ -56,6 +58,8 @@ class AuthController extends BaseController
                     Auth::logout();
                 }
                 return redirect()->route('partner.cabinet');
+            } else {
+                return back()->with('error', 'Логин или пароль не правильно');
             }
         }
     }
