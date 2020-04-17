@@ -36,10 +36,7 @@
                 // form_data.append('amount', this.amount);
 
                 //let form_data = new FormData();
-
-                let username = 'pk_21387d1b5966c5fae5df1f7a58bf8';
-                let password = '01c0f94586fc6131ce571aa280c28a04';
-                let auths = 'Basic ' + new Buffer(username + ':' + password).toString('base64');
+                let auths = 'Basic ' + new Buffer('pk_21387d1b5966c5fae5df1f7a58bf8' + ':' + '01c0f94586fc6131ce571aa280c28a04').toString('base64');
                 axios.post('https://api.cloudpayments.ru/test',
                     {
                             headers: {
