@@ -1877,9 +1877,11 @@ __webpack_require__.r(__webpack_exports__);
       // form_data.append('amount', this.amount);
       var form_data = new FormData();
       axios__WEBPACK_IMPORTED_MODULE_0___default.a.post('https://api.cloudpayments.ru/test', form_data, {
+        withCredentials: true,
         headers: {
           'Content-Type': 'application/x-www-form-urlencode'
-        },
+        }
+      }, {
         auth: {
           username: 'pk_21387d1b5966c5fae5df1f7a58bf8',
           password: '01c0f94586fc6131ce571aa280c28a04'
