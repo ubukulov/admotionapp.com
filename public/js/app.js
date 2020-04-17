@@ -1875,9 +1875,8 @@ __webpack_require__.r(__webpack_exports__);
       // let form_data = new FormData();
       // form_data.append('partner_id', this.partner_id);
       // form_data.append('amount', this.amount);
-      var form_data = new FormData();
-      axios__WEBPACK_IMPORTED_MODULE_0___default.a.post('https://api.cloudpayments.ru/test', form_data, {
-        withCredentials: true,
+      //let form_data = new FormData();
+      axios__WEBPACK_IMPORTED_MODULE_0___default.a.post('https://api.cloudpayments.ru/test', {
         headers: {
           'Content-Type': 'application/x-www-form-urlencode'
         }
