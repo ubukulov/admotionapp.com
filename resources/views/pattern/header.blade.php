@@ -4,7 +4,7 @@
             <img src="{{ asset('images/logo2.png') }}" alt="" height="65">
         </a>
         @if(Auth::check())
-            <button type="button" style="margin-right: 40px;" class="btn btn-success" data-toggle="modal" data-target="#quick_pay">Оплатить</button>
+            <a href="{{ route('user.payment_form') }}" style="margin-right: 40px;" class="btn btn-success">Оплатить</a>
         @endif
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>

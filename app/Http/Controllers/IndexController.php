@@ -34,12 +34,13 @@ class IndexController extends BaseController
 
     public function paybox(Request $request)
     {
+        dd($request->all());
         $amount = (int) $request->input('amount');
         $partner_id = (int) $request->input('partner_id');
         $user_id = Auth::user()->id;
 
 
-        $payment = Payment::create([
+        /*$payment = Payment::create([
             'user_id' => $user_id,
             'partner_id' => $partner_id,
             'sum' => $amount
@@ -84,7 +85,7 @@ class IndexController extends BaseController
             exit();
         } else {
             dd("Ошибка сервера");
-        }
+        }*/
     }
 
     public function payment_success()

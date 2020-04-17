@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Payment;
 use App\Models\User;
 use Illuminate\Http\Request;
+use App\Http\Resources\PaymentResource;
 use Auth;
 
 class UserController extends BaseController
@@ -34,7 +35,7 @@ class UserController extends BaseController
 
     public function payment(Request $request)
     {
-        $sum = (int) $request->input('sum');
+        $sum = (int) $request->input('amount');
         $partner_id = $request->input('partner_id');
         $payment = Payment::create([
             'user_id' => Auth::user()->id,
@@ -43,9 +44,9 @@ class UserController extends BaseController
         ]);
 
         if ($payment) {
-            $lastInsertId = $payment->id;
-
-            $pg_merchant_id = 511867;
+            PaymentResource::withoutWrapping();
+            return new PaymentResource($payment);
+            /*$pg_merchant_id = 511867;
             $pg_salt = 'y7crxXTrz6SXKPNd';
 
             $request = [
@@ -78,7 +79,7 @@ class UserController extends BaseController
             $query = http_build_query($request);
             //redirect a customer to payment page
             header('Location: https://api.paybox.money/payment.php?'.$query);
-            exit();
+            exit();*/
         } else {
             dd("Ошибка сервера");
         }

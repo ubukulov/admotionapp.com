@@ -45,6 +45,7 @@
     <hr>
 
     <div class="col-md-12 mt-5">
+        <h4>Список акции</h4>
         <div class="row">
             @foreach($partner->stocks as $stock)
                 <div class="col-md-2">

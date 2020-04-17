@@ -42,7 +42,6 @@
             <div class="info">
                 <table class="table table-bordered table-striped">
                     <thead>
-                    <th>Номер</th>
                     <th>Приз</th>
                     <th>Краткое описание</th>
                     <th>Условия</th>
@@ -53,9 +52,12 @@
                     <tbody>
                     @foreach($stock->gifts as $gift)
                         <tr>
-                            <td>{{ $gift->id }}</td>
-                            <td>
-                                <img src="{{ $gift->img() }}" alt="" align="left">&nbsp;{{ $gift->title }}
+                            <td width="200">
+                                <div><img src="{{ $gift->img() }}" alt=""></div>
+                                <div>
+                                    #{{ $gift->id." ".$gift->title }}
+                                </div>
+
                             </td>
                             <td>
                                 {{ $gift->description }}
