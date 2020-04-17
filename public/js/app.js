@@ -1876,14 +1876,12 @@ __webpack_require__.r(__webpack_exports__);
       // form_data.append('partner_id', this.partner_id);
       // form_data.append('amount', this.amount);
       //let form_data = new FormData();
+      var username = 'pk_21387d1b5966c5fae5df1f7a58bf8';
+      var password = '01c0f94586fc6131ce571aa280c28a04';
       axios__WEBPACK_IMPORTED_MODULE_0___default.a.post('https://api.cloudpayments.ru/test', {
         headers: {
-          'Content-Type': 'application/x-www-form-urlencode'
-        }
-      }, {
-        auth: {
-          username: 'pk_21387d1b5966c5fae5df1f7a58bf8',
-          password: '01c0f94586fc6131ce571aa280c28a04'
+          'Content-Type': 'application/x-www-form-urlencode',
+          'Authorization': btoa(username + ":" + password)
         }
       }).then(function (res) {
         console.log(res);

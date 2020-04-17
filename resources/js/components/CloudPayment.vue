@@ -37,16 +37,14 @@
 
                 //let form_data = new FormData();
 
+                let username = 'pk_21387d1b5966c5fae5df1f7a58bf8';
+                let password = '01c0f94586fc6131ce571aa280c28a04';
+
                 axios.post('https://api.cloudpayments.ru/test',
                     {
                             headers: {
                                 'Content-Type': 'application/x-www-form-urlencode',
-                            }
-                        },
-                        {
-                            auth: {
-                                username: 'pk_21387d1b5966c5fae5df1f7a58bf8',
-                                password: '01c0f94586fc6131ce571aa280c28a04'
+                                'Authorization': btoa(username + ":" + password)
                             }
                         })
                     .then(res => {
